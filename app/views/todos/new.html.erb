@@ -1,35 +1,5 @@
 <h1>Create a new todo</h1>
- <!--Checks to see if there are any errors-->
-<% if @todo.errors.any? %>
-    <h2>The following errors prevented the to do from being saved</h2>
-    <ul>
-        <% @todo.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <%end%>
-    </ul>
-<% end %>
-
-<!--you need to add the = sign after the % to make embedded code appear on screen-->
-<%= form_for @todo do |f| %>
-
-    <p>
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-    </p>
-    
-    <p>
-        <%= f.label :description %> <br>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-        
-    </p>
-
-<% end %>
-
-<%= link_to "Back to todos listing", todos_path %>
+<%= render "form" %>
 
 
 

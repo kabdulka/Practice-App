@@ -1,36 +1,9 @@
 <h1>Edit a Todo</h1>
  <!--Checks to see if there are any errors-->
-<% if @todo.errors.any? %>
-    <h2>The following errors prevented the to do from being saved</h2>
-    <ul>
-        <% @todo.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <%end%>
-    </ul>
-<% end %>
+<!-- we don't need to add the folder to the path name since _form is in the 
+same folder as edit -->
 
-<!--you need to add the = sign after the % to make embedded code appear on screen-->
-<%= form_for @todo do |f| %>
-
-    <p>
-        <%= f.label :name %> <br>
-        <%= f.text_field :name %>
-    </p>
-    
-    <p>
-        <%= f.label :description %> <br>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit %>
-        
-    </p>
-
-<% end %>
-
-<%= link_to "Back to todos listing", todos_path %>
-
+<%= render "form" %>
 
 
 
