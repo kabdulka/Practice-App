@@ -1,4 +1,12 @@
 class TodosController < ApplicationController
+    # we can use a before filter
+    # We don't want to do this for all of our methods
+    ## only for show, edit, update and destroy
+    # so add only keyword with square brackets and inside of it specify which
+    # methods you want to apply it to
+    ## So.. what this says is before we do anything for these methods run the
+    # the set to do method which sets the todo by running the line of code inside of it
+    before_action :set_todo, only: [:edit, :update, :show, :destroy]
     
     def new
         @todo = Todo.new
@@ -17,12 +25,10 @@ class TodosController < ApplicationController
     end
     
     def show
-        @todo = Todo.find(params[:id])
     end
     
     def edit
         # Grab the id from the param and find a todo to edit it
-        @todo = Todo.find(params[:id])
     end
     
     def index
@@ -32,7 +38,6 @@ class TodosController < ApplicationController
     
     def destroy
         # first find the todo
-        @todo = Todo.find(params[:id])
         # Then call the destroy method
         @todo.destroy
         # once you destroy it give a flash notice
@@ -42,7 +47,6 @@ class TodosController < ApplicationController
     
     def update
         # will look similar to the create action
-        @todo = Todo.find(params[:id])
         if @todo.update(todo_params)
             flash[:notice] = "Todo was successfully updated"
             redirect_to todo_path(@todo)
@@ -52,6 +56,10 @@ class TodosController < ApplicationController
     end
     
     private 
+    
+    def set_todo
+        @todo = Todo.find(params[:id])
+    end
     
     def todo_params
         # Whitelist the name and description
