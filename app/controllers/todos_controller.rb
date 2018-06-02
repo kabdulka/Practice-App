@@ -25,6 +25,11 @@ class TodosController < ApplicationController
         @todo = Todo.find(params[:id])
     end
     
+    def index
+        # grabs all todos from the database
+        @todos = Todo.all
+    end
+    
     def update
         # will look similar to the create action
         @todo = Todo.find(params[:id])
