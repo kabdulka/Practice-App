@@ -20,6 +20,22 @@ class TodosController < ApplicationController
         @todo = Todo.find(params[:id])
     end
     
+    def edit
+        # Grab the id from the param and find a todo to edit it
+        @todo = Todo.find(params[:id])
+    end
+    
+    def update
+        # will look similar to the create action
+        @todo = Todo.find(params[:id])
+        if @todo.update(todo_params)
+            flash[:notice] = "Todo was successfully updated"
+            redirect_to todo_path(@todo)
+        else
+            render 'edit'
+        end
+    end
+    
     private 
     
     def todo_params
