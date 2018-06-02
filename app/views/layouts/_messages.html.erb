@@ -1,0 +1,9 @@
+
+<!-- Create a partial to make application.html.erb clean -->
+<!-- need to render this in the application.html.erb file -->
+
+ <% flash.each do |name, msg| %>
+  <ul>
+      <li><%= msg %></li>
+  </ul>
+<%end%>
