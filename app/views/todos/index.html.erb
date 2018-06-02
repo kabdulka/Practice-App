@@ -16,6 +16,10 @@
             <!--Add an edit and show buttons to each todo-->
             <td> <%= link_to "Edit a todo", edit_todo_path(todo) %> </td>
             <td> <%= link_to "Show", todo_path(todo) %> </td>
+            <!--add the destroy methid-->
+            <!--need to specify it's a delete method-->
+            <td> <%= link_to "Delete", todo_path(todo), method: :delete, data: {confirm: "Are you sure?"} %></td>
+            <!--the date.. onwards is javascript code for confirming deletion-->
         </tr>
     <% end %>
 </table>

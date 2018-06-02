@@ -30,6 +30,16 @@ class TodosController < ApplicationController
         @todos = Todo.all
     end
     
+    def destroy
+        # first find the todo
+        @todo = Todo.find(params[:id])
+        # Then call the destroy method
+        @todo.destroy
+        # once you destroy it give a flash notice
+        flash[:notice] = "Todo was deleted successfully"
+        redirect_to todos_path
+    end
+    
     def update
         # will look similar to the create action
         @todo = Todo.find(params[:id])
